@@ -4,11 +4,15 @@ import userRoutes from './routes/user.routes.js';
 import newsRoutes from './routes/news.routes.js';
 import { connectToMongoDB } from './db/connectToMongoDB.js';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 
 const PORT = process.env.PORT || 5000;
 

@@ -1,17 +1,28 @@
 import './App.css';
+//import React from 'react';
+//import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+//import Home from './pages/Home';
+//import AboutUs from './pages/AboutUs';
+//import Compliance from './pages/Compliance';
+//import News from './pages/News';
+//import Products from './pages/Products';
+//import OurPrinciples from './pages/OurPrinciples';
+//import Services from './pages/Services';
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import AboutUs from './pages/AboutUs';
-import Compliance from './pages/Compliance';
 import News from './pages/News';
-import Products from './pages/Products';
-import OurPrinciples from './pages/OurPrinciples';
-import Services from './pages/Services';
 
 const App = () => {
   return (
-    <Router>
+
+
+    <div className="App">
+
+    <News />
+  </div>
+
+
+
+    /*<Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
@@ -22,6 +33,7 @@ const App = () => {
           <Route path="/services" element={<Services />} />
         </Routes>
     </Router>
+    */
   );
 };
 
