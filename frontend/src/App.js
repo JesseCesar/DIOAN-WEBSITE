@@ -13,7 +13,16 @@ import ContactUs from './pages/ContactUs';
 
 const App = () => {
   return (
-    <Router>
+
+
+    <div className="App">
+
+    <News />
+  </div>
+
+
+
+    /*<Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
@@ -26,6 +35,7 @@ const App = () => {
           <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
     </Router>
+    */
   );
 };
 
