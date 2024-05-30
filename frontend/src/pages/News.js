@@ -16,7 +16,7 @@ const News = () => {
 
   return (
     <div>
-      <h1>News</h1>
+      <h1>News one</h1>
       <ul>
         {news.map(article => (
           <li key={article._id}>
