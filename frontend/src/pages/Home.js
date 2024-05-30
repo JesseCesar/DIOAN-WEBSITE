@@ -1,11 +1,16 @@
 import React from 'react';
 import '../index.css';
+import Navbar from '../components/Navbar';
+import BackgroundImage from '../components/BackgroundImage';
+import Footer from '../components/Footer';
 
 const Home = () => {
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-blue-500">Hello, Tailwind CSS!</h1>
-      <p>Welcome to our website!</p>
+    <div className=''>
+      <BackgroundImage />
+      <Navbar />
+      <Footer />
     </div>
   );
 };
