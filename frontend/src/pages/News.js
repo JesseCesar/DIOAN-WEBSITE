@@ -1,4 +1,3 @@
-// src/News.js
 import React, { useEffect, useState } from 'react';
 import { fetchNews } from '../api';
 
