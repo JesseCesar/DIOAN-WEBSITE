@@ -7,7 +7,7 @@ import Compliance from './pages/Compliance';
 import News from './pages/News';
 import OurPrinciples from './pages/OurPrinciples';
 import LogIn from './pages/LogIn';
-import ContactUs from './pages/ContactUs';
+import SignUp from './pages/SignUp';
 
 const App = () => {
   return (
@@ -18,8 +18,8 @@ const App = () => {
           <Route path="/compliance" element={<Compliance />} />
           <Route path="/news" element={<News />} />
           <Route path="/our-principles" element={<OurPrinciples />} />
-          <Route path='/login' element={<LogIn />} />
-          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path='/log-in' element={<LogIn />} />
+          <Route path='/sign-Up' element={<SignUp />} />
         </Routes>
     </Router>
   );
