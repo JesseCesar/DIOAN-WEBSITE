@@ -1,24 +1,60 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaEnvelope, FaWhatsapp, FaPhone } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer class="bg-trueGray-100 rounded-lg shadow m-4 dark:bg-gray-800">
-      <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 DIOAN. All Rights Reserved.
+    <footer className="bg-trueGray-100 rounded-lg dark:bg-gray-800">
+      <div className="w-full mx-auto max-w-screen-xl p-4 flex flex-col md:flex-row items-center justify-between font-poppins">
+
+        {/* Left Section: Copyright */}
+        <span className="text-sm text-gray-500 dark:text-gray-400 text-center md:text-left">
+          © 2024 DIOAN. All Rights Reserved.
         </span>
-        <div class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-          <Link className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" to="/about-us">
-            About Us
-          </Link>
-          <Link className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" to="/contact-us">
-            Contact Us
-          </Link>
+
+        {/* Center Section: Social Links */}
+        <div className="flex justify-center space-x-6 mt-4 md:mt-0">
+          <a href="https://www.facebook.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <FaFacebook size={24} />
+          </a>
+          <a href="https://www.twitter.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <FaTwitter size={24} />
+          </a>
+          <a href="https://www.instagram.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <FaInstagram size={24} />
+          </a>
+          <a href="https://www.linkedin.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <FaLinkedin size={24} />
+          </a>
+          <a href="mailto:example@gmail.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <FaEnvelope size={24} />
+          </a>
+          <a href="https://wa.me/1234567890" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <FaWhatsapp size={24} />
+          </a>
+          <a href="tel:+1234567890" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <FaPhone size={24} />
+          </a>
+        </div>
+
+        {/* Right Section: Address and Working Hours */}
+        <div className="text-center md:text-right mt-4 md:mt-0">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            <strong>Address:</strong> Avenida 21 de Janeiro Luanda (Morro-Bento)
+          </p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            <strong>Working Hours:</strong> Mon - Fri: 9 AM - 5 PM
+          </p>
         </div>
       </div>
-    </footer>
-  )
-}
 
-export default Footer
+      {/* Bottom Section: Navigation Links */}
+      <div className="w-full mx-auto max-w-screen-xl p-4 flex flex-wrap items-center justify-center text-center md:text-left text-sm font-medium text-gray-500 dark:text-gray-400 mt-4 md:mt-0 font-poppins">
+        <Link className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" to="/about-us">
+          About Us
+        </Link>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
