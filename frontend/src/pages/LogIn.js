@@ -2,15 +2,31 @@ import React, { useState } from 'react'
 import logo from '../assets/logo-black.png'
 import background from '../assets/file.png'
 import { Link } from 'react-router-dom'
+import useLogin  from '../hooks/useLogin'
 
 const LogIn = () => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const {loading, login} = useLogin();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await login({email, password})
+  }
+
   const [isChecked, setIsChecked] = useState(false);
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
   return (
     <div>
+
       <div class="bg-cover bg-center h-screen font-poppins"
+
+      <div className="bg-cover bg-center h-screen"
+
         style={{ backgroundImage: `url(${background})` }}>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -22,7 +38,7 @@ const LogIn = () => {
             </h2>
           </div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
                   Email address
@@ -35,7 +51,8 @@ const LogIn = () => {
                     autoComplete="email"
                     required
                     placeholder="   example@example.com"
-                    className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value={email} onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </div>
@@ -53,7 +70,8 @@ const LogIn = () => {
                     autoComplete="current-password"
                     required
                     placeholder='   *********'
-                    className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value={password} onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
                 <div className='flex flex-row justify-between mt-3'>
@@ -69,9 +87,9 @@ const LogIn = () => {
                     </label>
                   </div>
                   <div className="text-sm">
-                    <a href="#" className="font-normal cursor-pointer text-gray-600 hover:text-indigo-500">
-                      Forgot password?
-                    </a>
+                    <span className="font-normal cursor-pointer text-gray-600 hover:text-indigo-500">
+                    <Link to="/forgotpassword">Forgot Password?</Link>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -79,8 +97,9 @@ const LogIn = () => {
                 <button
                   type="submit"
                   className="flex w-1/2 justify-center mx-auto rounded-md bg-white px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  disabled={loading}
                 >
-                  Log In
+                  {loading ? <span className="loading loading-spinner"></span> : "Login"}
                 </button>
               </div>
               <div className="text-sm flex justify-center">
