@@ -1,29 +1,25 @@
-import React, { useState, useRef } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import logo from '../assets/logo-w-m.png';
-import { FaSearch } from 'react-icons/fa';
+import React from 'react';
+import '../index.css';
 import BackgroundImage from '../components/BackgroundImage';
+import Navbar from '../components/Navbar';
+import NewsSection from '../components/NewsSection';
+import ProductSection from '../components/ProductSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import Footer from '../components/Footer';
+import LocationSection from '../components/LocationSection';
 
 const Home = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  const [isSearchVisible, setIsSearchVisible] = useState(false);
-
-  const toggleSearchBar = () => {
-    setIsSearchVisible(!isSearchVisible);
-  };
-
-  const myRef = useRef(null);
-  const upRef = useRef(null);
-
-
   return (
     <div>
       <BackgroundImage />
+
+      <Navbar />
+      <NewsSection />
+      <ProductSection />
+      <TestimonialsSection />
+      <LocationSection />
+      <Footer />
+
       <nav className="bg-transparent fixed w-full z-50 top-0 left-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -139,6 +135,7 @@ const Home = () => {
           </div>
         </div>
       </footer>
+
     </div>
   );
 };
