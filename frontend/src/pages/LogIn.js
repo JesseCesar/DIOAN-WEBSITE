@@ -23,11 +23,12 @@ const LogIn = () => {
   return (
     <div>
 
-      <div class="bg-cover bg-center h-screen font-poppins"
+      <div class="bg-cover bg-center h-screen font-poppins">
 
       <div className="bg-cover bg-center h-screen"
 
         style={{ backgroundImage: `url(${background})` }}>
+        </div>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <Link to='/'>
@@ -88,7 +89,7 @@ const LogIn = () => {
                   </div>
                   <div className="text-sm">
                     <span className="font-normal cursor-pointer text-gray-600 hover:text-indigo-500">
-                    <Link to="/forgotpassword">Forgot Password?</Link>
+                    <Link to="/forgot-password">Forgot Password?</Link>
                     </span>
                   </div>
                 </div>
