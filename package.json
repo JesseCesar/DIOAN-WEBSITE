@@ -4,7 +4,6 @@
   "description": "The official website of Dioan",
   "main": "server.js",
   "scripts": {
-    "preinstall": "rm -rf node_modules package-lock.json && npm install",
     "server": "nodemon backend/server.js",
     "start": "node backend/server.js",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
