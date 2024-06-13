@@ -13,7 +13,7 @@ const SignUp = () => {
     confirmPassword: ""
   })
 
-  const {loading, signup} = useSignup();
+  const { loading, signup } = useSignup();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,11 +42,11 @@ const SignUp = () => {
                   name="fullName"
                   type="text"
                   autoComplete="name"
-                  placeholder='Jane Doe'
+                  placeholder=' Jane Doe'
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   value={inputs.fullName}
-                  onChange={(e) => setInputs({...inputs, fullName: e.target.value})}
+                  onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
                 />
               </div>
             </div>
@@ -59,11 +59,11 @@ const SignUp = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder='example@example.com'
+                  placeholder=' example@example.com'
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   value={inputs.email}
-                  onChange={(e) => setInputs({...inputs, email: e.target.value})}
+                  onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
                 />
               </div>
             </div>
@@ -76,11 +76,11 @@ const SignUp = () => {
                   name="password"
                   type="password"
                   autoComplete="new-password"
-                  placeholder='*********'
+                  placeholder=' *********'
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   value={inputs.password}
-                  onChange={(e) => setInputs({...inputs, password: e.target.value})}
+                  onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
                 />
               </div>
             </div>
@@ -93,19 +93,18 @@ const SignUp = () => {
                   name="confirmPassword"
                   type="password"
                   autoComplete="new-password"
-                  placeholder='*********'
+                  placeholder=' *********'
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   value={inputs.confirmPassword}
-                  onChange={(e) => setInputs({...inputs, confirmPassword: e.target.value})}
+                  onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
                 />
               </div>
             </div>
             <div>
               <button
                 type="submit"
-                style={{ backgroundColor: 'blue', color: 'white' }}
-                className="w-full mt-2"
+                className="flex w-1/2 justify-center mx-auto rounded-md bg-white px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 disabled={loading}
               >
                 {loading ? <span className="loading loading-spinner"></span> : "Signup"}
@@ -127,4 +126,3 @@ const SignUp = () => {
 }
 
 export default SignUp;
-

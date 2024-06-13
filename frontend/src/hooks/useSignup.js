@@ -55,18 +55,18 @@ export default useSignup;
 
 
 
-function hundleInputErrors ({fullName, email, password, confirmPassword}) {
-  if(!fullName || !email || !password || !confirmPassword) {
+function hundleInputErrors({ fullName, email, password, confirmPassword }) {
+  if (!fullName || !email || !password || !confirmPassword) {
     toast.error('Please fill all the fields')
     return false
   }
 
-  if(password !== confirmPassword) {
+  if (password !== confirmPassword) {
     toast.error('Passwords do not match')
     return false
   }
 
-  if(password.length < 6) {
+  if (password.length < 6) {
     toast.error('Password should be at least 6 characters long')
     return false
   }

@@ -40,7 +40,7 @@ const NewsSection = () => {
               </div>
               <div className="group relative mt-4">
                 <h3 className="text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600 transition-colors duration-300">
-                  <a href={newsItem.href}>
+                  <a href={`/news/${newsItem.id}`}>
                     <span className="absolute inset-0" />
                     {newsItem.title}
                   </a>
