@@ -25,20 +25,26 @@ const ResetPassword = () => {
   };
 
   return (
-    <div>
-      <h2>Reset Password</h2>
+
+    <div className="max-w-md mx-auto bg-white p-8 border border-gray-300 rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-4">Reset Password</h2>
+      {/* {message && <p className="mb-4 text-red-500">{message}</p>} */}
       <form onSubmit={handleSubmit}>
-        <label>
-          New Password:
+        <div className="mb-4">
+          <label className="block text-gray-700">New Password</label>
           <input
             type="password"
+            className="w-full p-2 border border-gray-300 rounded"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <button type="submit" disabled={loading}>
-          {loading ? 'Resetting...' : 'Reset Password'}
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
+        >
+          Reset Password
         </button>
       </form>
     </div>

@@ -2,18 +2,18 @@ import React, { useState } from 'react'
 import logo from '../assets/logo-black.png'
 import background from '../assets/file.png'
 import { Link } from 'react-router-dom'
-import useLogin  from '../hooks/useLogin'
+import useLogin from '../hooks/useLogin'
 
 const LogIn = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const {loading, login} = useLogin();
+  const { loading, login } = useLogin();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await login({email, password})
+    await login({ email, password })
   }
 
   const [isChecked, setIsChecked] = useState(false);
@@ -22,13 +22,9 @@ const LogIn = () => {
   };
   return (
     <div>
-
       <div class="bg-cover bg-center h-screen font-poppins">
-
-      <div className="bg-cover bg-center h-screen"
-
-        style={{ backgroundImage: `url(${background})` }}>
-        </div>
+        <div className="bg-cover bg-center h-screen"
+          style={{ backgroundImage: `url(${background})` }}>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <Link to='/'>
@@ -89,7 +85,7 @@ const LogIn = () => {
                   </div>
                   <div className="text-sm">
                     <span className="font-normal cursor-pointer text-gray-600 hover:text-indigo-500">
-                    <Link to="/forgot-password">Forgot Password?</Link>
+                      <Link to="/forgot-password">Forgot Password?</Link>
                     </span>
                   </div>
                 </div>
@@ -115,6 +111,7 @@ const LogIn = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

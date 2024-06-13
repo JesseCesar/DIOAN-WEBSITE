@@ -9,10 +9,10 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => changeLanguage('en')}>English</button>
-      <button onClick={() => changeLanguage('fr')}>Français</button>
-      <button onClick={() => changeLanguage('pt')}>Português</button>
+    <div class="flex justify-center space-x-4 p-4 bg-gray-100">
+      <button class="px-2 py-1 bg-gray-500 text-white rounded hover:bg-green-700" onClick={() => changeLanguage('en')}>English</button>
+      <button class="px-2 py-1 bg-gray-500 text-white rounded hover:bg-green-700" onClick={() => changeLanguage('fr')}>Français</button>
+      <button class="px-2 py-1 bg-gray-500 text-white rounded hover:bg-green-700" onClick={() => changeLanguage('pt')}>Português</button>
     </div>
   );
 };

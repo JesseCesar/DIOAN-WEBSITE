@@ -1,26 +1,22 @@
 import React from 'react';
+import Genimg from '../assets/CTO.jpg';
+import CEOimg from '../assets/Man.jpg';
+
 
 const testimonials = [
   {
     id: 1,
-    name: 'John Doe',
-    title: 'CEO, Company A',
-    image: 'https://via.placeholder.com/150',
+    name: 'Helder António Ramos',
+    title: 'CEO, DIOAN',
+    image: Genimg,
     text: 'This product has changed the way we operate and has made a huge difference in our productivity.',
   },
   {
     id: 2,
-    name: 'Jane Smith',
-    title: 'CTO, Company B',
-    image: 'https://via.placeholder.com/150',
+    name: 'Alberto Diogo Muanda',
+    title: 'General Director, DIOAN',
+    image: CEOimg,
     text: 'Incredible results! We are very satisfied with the quality and support provided.',
-  },
-  {
-    id: 3,
-    name: 'Mike Johnson',
-    title: 'COO, Company C',
-    image: 'https://via.placeholder.com/150',
-    text: 'A game-changer for our business. The team is extremely helpful and the service is top-notch.',
   },
 ];
 
@@ -28,7 +24,7 @@ const TestimonialsSection = () => {
   return (
     <div className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 font-poppins">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900">What Our Clients Say</h2>
+        <h2 className="text-3xl font-bold mb-8 text-gray-900">What Our Leaders Say</h2>
         <div className="flex flex-wrap justify-center gap-8">
           {testimonials.map((testimonial) => (
             <div key={testimonial.id} className="max-w-sm bg-white rounded-lg shadow-md p-6">

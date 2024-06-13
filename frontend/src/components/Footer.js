@@ -53,6 +53,16 @@ const Footer = () => {
           About Us
         </Link>
       </div>
+
+      {/* Dev team and credits */}
+      <div>
+        <p className="text-center text-gray-300 dark:text-gray-300 text-sm mt-4">
+          Developed by
+          <a href="https://github.com/JesseCesar" className="text-blue-200 hover:underline"> Jesse  </a>
+          and
+          <a href="https://github.com/mrjacksoncool" className="text-blue-200 hover:underline"> Mojela</a>
+        </p>
+      </div>
     </footer>
   );
 };
