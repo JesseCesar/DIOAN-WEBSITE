@@ -3,6 +3,7 @@ import path from 'path';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import { fileURLToPath } from 'url';
 
 import userRoutes from './routes/user.routes.js';
 import newsRoutes from './routes/news.routes.js';
@@ -12,7 +13,8 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const _dirname = path.dirname(_filename);
 
 // Middleware
 app.use(express.json());
