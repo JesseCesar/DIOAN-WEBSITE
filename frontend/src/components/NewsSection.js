@@ -16,8 +16,6 @@ const NewsSection = () => {
       });
   }, []);
 
-  // use hook
-
   return (
     <div className="bg-white font-poppins">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 lg:py-6 py-6">
@@ -47,6 +45,7 @@ const NewsSection = () => {
                 </h3>
                 <p className="mt-3 text-sm leading-6 text-gray-600 line-clamp-3">{newsItem.content}</p>
               </div>
+              <Link to={`/news/${news._id}`} className="text-blue-500">Read more</Link>
             </article>
           ))}
         </div>

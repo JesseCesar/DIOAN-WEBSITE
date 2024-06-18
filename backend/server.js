@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
-
 import userRoutes from './routes/user.routes.js';
 import newsRoutes from './routes/news.routes.js';
 import { connectToMongoDB } from './db/connectToMongoDB.js';

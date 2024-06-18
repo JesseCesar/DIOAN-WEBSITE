@@ -12,6 +12,7 @@ import {Toaster} from 'react-hot-toast'
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import LanguageSwitcher from './components/LanguageSwitcher';
+import NewsView from './pages/NewsView';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path='/sign-Up' element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword/>}/>
           <Route path="/reset-password/:token" element={<ResetPassword/>} />
+          <Route path="/news/:id" component={NewsView} />
         </Routes>
         <Toaster />
     </Router>
