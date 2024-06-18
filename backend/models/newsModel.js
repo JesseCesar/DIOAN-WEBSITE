@@ -6,6 +6,7 @@ const newsSchema = new mongoose.Schema({
   image: { type: String },
 }, {timestamps: true});
 
+
 const News = mongoose.model("News", newsSchema);
 
 export default News;
