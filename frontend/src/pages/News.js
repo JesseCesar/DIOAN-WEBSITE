@@ -5,6 +5,7 @@ const News = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
+    console.log(`Backend URL: ${process.env.REACT_APP_BACKEND_URL}`);
     fetch(`${process.env.REACT_APP_BACKEND_URL}/api/news`)
       .then(response => {
         console.log(`Response status: ${response.status}, status text: '${response.statusText}'`);
