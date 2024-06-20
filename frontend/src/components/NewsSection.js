@@ -8,8 +8,9 @@ const NewsSection = () => {
 
   useEffect(() => {
     fetch(`https://diaon.onrender.com/api/news`)
-      .then(response => {
-        setNews(response.data);
+      .then(response => response.json()) // parse the response to JSON
+      .then(data => {
+        setNews(data); // set the news state with the parsed data
       })
       .catch(error => {
         console.error('Error fetching news:', error);
