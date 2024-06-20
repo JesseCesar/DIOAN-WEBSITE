@@ -6,10 +6,13 @@ const News = () => {
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_BACKEND_URL}/api/news`)
-      .then(response => response.json())
+      .then(response => {
+        console.log(`Response status: ${response.status}, status text: '${response.statusText}'`);
+        return response.json();
+      })
       .then(data => {
         setNews(data);
-        console.log(data); // Add this line
+        console.log(data);
       })
       .catch(error => {
         console.error('Error fetching news:', error);
