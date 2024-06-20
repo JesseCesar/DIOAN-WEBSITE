@@ -7,7 +7,7 @@ const NewsSection = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/news`)
+    fetch(`https://diaon.onrender.com/api/news`)
       .then(response => {
         setNews(response.data);
       })

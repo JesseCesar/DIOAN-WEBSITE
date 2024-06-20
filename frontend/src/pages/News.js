@@ -7,7 +7,7 @@ const News = () => {
 
   useEffect(() => {
     console.log(`Backend URL: ${process.env.REACT_APP_BACKEND_URL}`);
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/news`)
+    fetch(`https://diaon.onrender.com/api/news`)
       .then(response => {
         console.log(`Response status: ${response.status}, status text: '${response.statusText}'`);
         return response.json();
