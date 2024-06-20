@@ -9,6 +9,7 @@ const News = () => {
       .then(response => response.json())
       .then(data => {
         setNews(data);
+        console.log(data); // Add this line
       })
       .catch(error => {
         console.error('Error fetching news:', error);
