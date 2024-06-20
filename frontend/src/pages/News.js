@@ -5,9 +5,10 @@ const News = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetch('/api/news')
-      .then(response => {
-        setNews(response.data);
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/news`)
+      .then(response => response.json())
+      .then(data => {
+        setNews(data);
       })
       .catch(error => {
         console.error('Error fetching news:', error);

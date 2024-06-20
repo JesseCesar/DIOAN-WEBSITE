@@ -7,7 +7,7 @@ const NewsSection = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetch('/api/news')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/news`)
       .then(response => {
         setNews(response.data);
       })
