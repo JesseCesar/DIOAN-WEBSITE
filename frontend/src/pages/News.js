@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 
 const News = () => {
+  console.log('News component rendered');
   const [news, setNews] = useState([]);
 
   useEffect(() => {
