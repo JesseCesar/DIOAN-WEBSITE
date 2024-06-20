@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { fetchNews } from '../api';
 import moment from 'moment';
 
 const News = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetchNews()
+    fetch('/api/news')
       .then(response => {
         setNews(response.data);
       })
