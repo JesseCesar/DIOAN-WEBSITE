@@ -30,7 +30,7 @@ const NewsSection = () => {
             <article key={newsItem._id} className="flex flex-col items-start justify-between bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
               <div className="w-full">
                 <img src={newsItem.image} alt="" className="h-40 w-full object-cover rounded-t-lg" />
-              </div>
+              </div>  
               <div className="mt-4 flex items-center gap-x-4 text-xs">
                 <time dateTime={newsItem.createdAt} className="text-gray-500">
                   {moment(newsItem.createdAt).format('MMMM Do YYYY')}
@@ -38,7 +38,7 @@ const NewsSection = () => {
               </div>
               <div className="group relative mt-4">
                 <h3 className="text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600 transition-colors duration-300">
-                  <a href={`/news/${newsItem.id}`}>
+                  <a href={`/news/${newsItem._id}`}>
                     <span className="absolute inset-0" />
                     {newsItem.title}
                   </a>
