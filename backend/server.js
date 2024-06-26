@@ -2,7 +2,6 @@ import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-import cors from 'cors';
 import { fileURLToPath } from 'url';
 import userRoutes from './routes/user.routes.js';
 import newsRoutes from './routes/news.routes.js';
@@ -18,9 +17,7 @@ const __dirname = path.dirname(__filename);
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  origin: 'http://localhost:3000' // Adjust as necessary
-}));
+
 
 // API routes
 app.use("/api/user", userRoutes);

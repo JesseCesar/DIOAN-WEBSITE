@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { fetchNews } from '../api';
+
 
 const NewsSection = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetchNews()
-      .then(response => {
-        setNews(response.data);
+    fetch(`https://diaon.onrender.com/api/news`)
+      .then(response => response.json()) // parse the response to JSON
+      .then(data => {
+        setNews(data); // set the news state with the parsed data
       })
       .catch(error => {
         console.error('Error fetching news:', error);
@@ -26,7 +27,7 @@ const NewsSection = () => {
           </p>
         </div>
         <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {news.slice(0, 3).map((newsItem) => (
+        {news && news.length > 0 && news.slice(0, 3).map((newsItem) => (
             <article key={newsItem._id} className="flex flex-col items-start justify-between bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
               <div className="w-full">
                 <img src={newsItem.image} alt="" className="h-40 w-full object-cover rounded-t-lg" />

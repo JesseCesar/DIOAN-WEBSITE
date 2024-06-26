@@ -34,7 +34,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+    "start-backend": "node ../backend/server.js",
+    "start-frontend": "PORT=3000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -58,7 +60,9 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "cypress": "^13.11.0",
     "webpack": "^5.91.0"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
