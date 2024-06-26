@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaEnvelope, FaWhatsapp, FaPhone } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaLinkedin, FaEnvelope, FaWhatsapp, FaPhone } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -13,25 +13,22 @@ const Footer = () => {
 
         {/* Center Section: Social Links */}
         <div className="flex justify-center space-x-6 mt-4 md:mt-0">
-          <a href="https://www.facebook.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+          <a href="https://www.facebook.com/profile.php?id=61558629728187&mibextid=ZbWKwL" className="text-gray-500 hover:text-gray-900 dark:hover:text-white" target="_blank" rel="noreferrer">
             <FaFacebook size={24} />
           </a>
-          <a href="https://www.twitter.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
-            <FaTwitter size={24} />
-          </a>
-          <a href="https://www.instagram.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+          <a href="https://www.instagram.com/dioan_angola2024/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white" target="_blank" rel="noreferrer">
             <FaInstagram size={24} />
           </a>
-          <a href="https://www.linkedin.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+          <a href="https://www.linkedin.com/in/dioan-angola-843982305/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white" target="_blank" rel="noreferrer">
             <FaLinkedin size={24} />
           </a>
-          <a href="mailto:example@gmail.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+          <a href="mailto:dioanangola@gmail.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white" target="_blank" rel="noreferrer">
             <FaEnvelope size={24} />
           </a>
-          <a href="https://wa.me/1234567890" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+          <a href="https://wa.me/+2449469955878" className="text-gray-500 hover:text-gray-900 dark:hover:text-white" target="_blank" rel="noreferrer">
             <FaWhatsapp size={24} />
           </a>
-          <a href="tel:+1234567890" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+          <a href="tel:+2449469955878" className="text-gray-500 hover:text-gray-900 dark:hover:text-white" target="_blank" rel="noreferrer">
             <FaPhone size={24} />
           </a>
         </div>
@@ -58,9 +55,9 @@ const Footer = () => {
       <div>
         <p className="text-center text-gray-300 dark:text-gray-300 text-sm mt-4">
           Developed by
-          <a href="https://github.com/JesseCesar" className="text-blue-200 hover:underline"> Jesse  </a>
+          <a href="https://github.com/JesseCesar" target="_blank" className="text-blue-200 hover:underline" rel="noreferrer"> Jesse  </a>
           and
-          <a href="https://github.com/mrjacksoncool" className="text-blue-200 hover:underline"> Mojela</a>
+          <a href="https://github.com/mrjacksoncool" target="_blank" className="text-blue-200 hover:underline" rel="noreferrer"> Mojela</a>
         </p>
       </div>
     </footer>
