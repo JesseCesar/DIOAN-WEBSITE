@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import moment from 'moment';
 
 const NewsView = () => {
   const [news, setNews] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
   const { id } = useParams();
+  console.log('News component rendered');
 
   useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/api/news/${id}`);
-        setNews(response.data);
-      } catch (error) {
-        setError('Error fetching news article');
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNews();
+    fetch(`https://diaon.onrender.com/api/news/${id}`)
+      .then(response => {
+        console.log(`Response status: ${response.status}, status text: '${response.statusText}'`);
+        return response.json();
+      })
+      .then(data => {
+        setNews(data);
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error fetching news:', error);
+      });
   }, [id]);
 
-  if (loading) return <p>Loading article...</p>;
-  if (error) return <p>{error}</p>;
+  // if (loading) return <p>Loading article...</p>;
+  // if (error) return <p>{error}</p>;
 
   return (
     <div className='py-4 font-poppins text-center'>
