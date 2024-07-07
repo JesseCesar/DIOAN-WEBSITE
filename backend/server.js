@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import userRoutes from './routes/user.routes.js';
 import newsRoutes from './routes/news.routes.js';
 import { connectToMongoDB } from './db/connectToMongoDB.js';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ const __dirname = path.dirname(__filename);
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 
 // API routes
