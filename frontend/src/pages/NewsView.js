@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
+import DefaultImg from '../assets/default.jpg';
 
 const NewsView = () => {
   const [news, setNews] = useState({});
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null);
   const { id } = useParams();
-  console.log('News component rendered');
+  const { authUser } = useAuthContext();
 
   useEffect(() => {
-    fetch(`https://diaon.onrender.com/api/news/${id}`)
+    fetch(`http://localhost:5000/api/news/${id}`)
       .then(response => {
         console.log(`Response status: ${response.status}, status text: '${response.statusText}'`);
         return response.json();
@@ -24,25 +25,40 @@ const NewsView = () => {
       });
   }, [id]);
 
-  // if (loading) return <p>Loading article...</p>;
-  // if (error) return <p>{error}</p>;
-
   return (
-    <div className='py-4 font-poppins text-center'>
-      <h1 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>{news.title}</h1>
-      <div className='my-4 items-center gap-x-4 text-xs'>
-        <time dateTime={news.createdAt} className='text-gray-500'>
-          {moment(news.createdAt).format('MMMM Do YYYY')}
-        </time>
+    <div className='py-8 font-poppins bg-gray-50 text-center'>
+      <div className='max-w-4xl mx-auto px-6 lg:px-8'>
+        <h1 className='text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl'>{news.title}</h1>
+        <div className='my-4 text-gray-500 text-sm'>
+          <time dateTime={news.createdAt}>
+            {moment(news.createdAt).format('MMMM Do YYYY')}
+          </time>
+        </div>
+        <div className='my-8 flex justify-center'>
+          <img
+            className='w-full max-w-3xl h-auto rounded-lg shadow-lg object-cover'
+            src={news.image || DefaultImg}
+            alt='News'
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = DefaultImg;
+            }}
+          />
+        </div>
+        <div className='text-left px-4 lg:px-0'>
+          <p className='text-lg leading-8 text-gray-700'>
+            {news.content}
+          </p>
+        </div>
       </div>
-      <div className='my-4 justify-center'>
-        <img
-          className='h-96 w-3/4 rounded-lg object-cover object-center'
-          src={news.image}
-          alt=''
-        />
-      </div>
-      <span>{news.content}</span>
+      {authUser ? (
+        <>
+          <Link to={`/news/edit/${news._id}`} className="text-green-500 px-2">Edit News</Link>
+          <Link to={`/news/delete/${news._id}`} className="text-red-500">Delete News</Link>
+        </>
+      ) : (
+        <p>N ews</p>
+      )}
     </div>
   );
 };

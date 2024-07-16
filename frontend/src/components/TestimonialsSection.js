@@ -9,14 +9,14 @@ const testimonials = [
     name: 'Helder António Ramos',
     title: 'CEO, DIOAN',
     image: Genimg,
-    text: 'This product has changed the way we operate and has made a huge difference in our productivity.',
+    text: 'At the heart of our company is a commitment to sustainable farming practices. We believe that by investing in innovation and our community, we can cultivate a brighter future for everyone.',
   },
   {
     id: 2,
     name: 'Alberto Diogo Muanda',
     title: 'General Director, DIOAN',
     image: CEOimg,
-    text: 'Incredible results! We are very satisfied with the quality and support provided.',
+    text: "Technology is transforming agriculture, and we're at the forefront of that change. Our advanced solutions empower farmers to maximize their yield while minimizing their environmental footprint.",
   },
 ];
 

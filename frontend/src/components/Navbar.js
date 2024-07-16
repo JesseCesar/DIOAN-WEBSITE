@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo-white.png';
 import { FaSearch } from 'react-icons/fa';
@@ -9,6 +10,9 @@ const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [top, setTop] = useState(0);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [news, setNews] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +32,17 @@ const Navbar = () => {
     };
   }, [prevScrollPos]);
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/news`)
+      .then(response => response.json())
+      .then(data => {
+        setNews(data);
+      })
+      .catch(error => {
+        console.error('Error fetching news:', error);
+      });
+  }, []);
+
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -35,6 +50,15 @@ const Navbar = () => {
   const toggleSearchBar = () => {
     setIsSearchVisible(!isSearchVisible);
   };
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredArticles = news.filter(article =>
+    article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    article.content.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <nav className="bg-white fixed w-full z-50 top-0 left-0 transition-transform duration-300" style={{ top: `${top}px` }}>
@@ -62,7 +86,13 @@ const Navbar = () => {
               </NavLink>
             </div>
             <div className="flex items-center">
-              <input type="text" placeholder="Search news" className="bg-transparent border border-lime-700 text-black rounded-full py-2 px-4 focus:outline-none focus:bg-white focus:text-gray-800 transition duration-300" />
+              <input
+                type="text"
+                placeholder="Search news"
+                className="bg-transparent border border-lime-700 text-black rounded-full py-2 px-4 focus:outline-none focus:bg-white focus:text-gray-800 transition duration-300"
+                value={searchQuery}
+                onChange={handleSearch}
+              />
             </div>
           </div>
           {/* Mobile and tablet view */}
@@ -103,6 +133,8 @@ const Navbar = () => {
                   type="text"
                   className="bg-gray-700 text-white rounded-full px-4 py-2 focus:outline-none w-40 transition-opacity duration-300"
                   placeholder="Search news..."
+                  value={searchQuery}
+                  onChange={handleSearch}
                 />
               )}
               <button
@@ -128,6 +160,22 @@ const Navbar = () => {
           </div>
         )}
       </div>
+      {/* Render news articles */}
+      {(isSearchVisible || searchQuery) && (
+        <div className="bg-white p-4">
+          <ul>
+            {filteredArticles.map(article => (
+              <li key={article.id} className="border-b border-gray-300 py-2">
+                <Link to={`/news/${article._id}`}>
+                  <h2 className="font-bold">{article.title}</h2>
+                  <p className="text-sm text-gray-600">{article.date}</p>
+                  <p>{article.content}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };
