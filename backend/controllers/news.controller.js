@@ -2,7 +2,7 @@ import News from '../models/newsModel.js';
 
 export const postNews = async (req, res) => {
   try {
-    const { title, content} = req.body;
+    const { title, content } = req.body;
     let { image } = req.body;
     if (!image) {
       image = "";
@@ -66,4 +66,3 @@ export const deleteNews = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 }
-

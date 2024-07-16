@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
+import DefaultImg from '../assets/default.jpg';
+import { Link } from 'react-router-dom';
 
 const News = () => {
   console.log('News component rendered');
@@ -37,38 +39,46 @@ const News = () => {
   }
 
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-gray-50 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="">
-          <h2 className="flex justify-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From DIAON</h2>
-          <p className="flex justify-center mt-2 text-lg leading-8 text-gray-600">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From DIAON</h2>
+          <p className="mt-2 text-lg leading-8 text-gray-600">
             Here's what we've been up to
           </p>
         </div>
-        <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-8 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {news.length > 0 ? (
             news.map((newsItem) => (
-              <article key={newsItem._id} className="flex max-w-xl flex-col items-start justify-between">
-                <div className='flex max-w-sm rounded'>
-                  <img src={newsItem.image || 'default-image-url.jpg'} alt="news" className="h-40 w-80 rounded bg-gray-50" />
+              <article key={newsItem._id} className="flex flex-col items-start justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+                <div className='w-full rounded overflow-hidden'>
+                  <img src={newsItem.image || DefaultImg}
+                  alt="news"
+                  className="w-full h-48 object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = DefaultImg;
+                  }}
+                  />
                 </div>
-                <div className="flex items-center gap-x-4 text-xs">
+                <div className="mt-4 flex items-center gap-x-4 text-xs">
                   <time dateTime={newsItem.createdAt} className="text-gray-500">
                     {moment(newsItem.createdAt).format('MMMM Do YYYY')}
                   </time>
                 </div>
-                <div className="group relative">
-                  <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                <div className="mt-3 group relative">
+                  <h3 className="text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                     {newsItem.title}
                   </h3>
                   <p className="mt-3 text-base text-gray-500 group-hover:text-gray-400">
                     {newsItem.content}
                   </p>
                 </div>
+                <Link to={`/news/${newsItem._id}`} className="text-blue-500">Read more</Link>
               </article>
             ))
           ) : (
-            <p>No news available.</p>
+            <p className="col-span-3 text-center text-gray-500">No news available.</p>
           )}
         </div>
       </div>
