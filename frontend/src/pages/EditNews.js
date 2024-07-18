@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const EditNews = () => {
   const [title, setTitle] = useState('');
@@ -14,7 +15,7 @@ const EditNews = () => {
     const fetchNews = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:5000/news/${id}`);
+        const response = await axios.get(`/api/news/${id}`);
         setContent(response.data.content);
         setImage(response.data.image);
         setTitle(response.data.title);
@@ -33,8 +34,9 @@ const EditNews = () => {
     const data = { title, content, image };
     setLoading(true);
     try {
-      await axios.put(`http://localhost:5000/news/${id}`, data);
+      await axios.put(`/api/news/${id}`, data);
       navigate('/');
+      toast.success('News updated successfully');
     } catch (error) {
       alert('An error happened. Please check the console.');
       console.log(error);

@@ -4,6 +4,7 @@ import { useAuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import DefaultImg from '../assets/default.jpg';
+import DeleteNews from './DeleteNews';
 
 const NewsView = () => {
   const [news, setNews] = useState({});
@@ -54,10 +55,10 @@ const NewsView = () => {
       {authUser ? (
         <>
           <Link to={`/news/edit/${news._id}`} className="text-green-500 px-2">Edit News</Link>
-          <Link to={`/news/delete/${news._id}`} className="text-red-500">Delete News</Link>
+           <DeleteNews newsId={news._id} />
         </>
       ) : (
-        <p>N ews</p>
+        <p>News</p>
       )}
     </div>
   );
