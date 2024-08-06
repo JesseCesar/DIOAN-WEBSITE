@@ -20,7 +20,7 @@ const CreateNews = () => {
     };
     setLoading(true);
     axios
-      .post('http://localhost:5000/news', data)
+      .post('/api/news/post', data) // Updated URL
       .then(() => {
         setLoading(false);
         // enqueueSnackbar('News created successfully', { variant: 'success' });
