@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
+// import { useSnackbar } from 'notistack';
 
 const CreateNews = () => {
   const [title, setTitle] = useState('');
@@ -9,7 +9,7 @@ const CreateNews = () => {
   const [image, setImage] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { enqueueSnackbar } = useSnackbar();
+  // const { enqueueSnackbar } = useSnackbar();
 
   const handleSaveNews = () => {
     const data = {
@@ -19,15 +19,15 @@ const CreateNews = () => {
     };
     setLoading(true);
     axios
-      .post('http://localhost:5000/news', data)
+      .post('/api/news/post', data) // Updated URL
       .then(() => {
         setLoading(false);
-        enqueueSnackbar('News created successfully', { variant: 'success' });
+        // enqueueSnackbar('News created successfully', { variant: 'success' });
         navigate('/');
       })
       .catch((error) => {
         setLoading(false);
-        enqueueSnackbar('Error creating news', { variant: 'error' });
+        // enqueueSnackbar('Error creating news', { variant: 'error' });
         console.log(error);
       });
   };
