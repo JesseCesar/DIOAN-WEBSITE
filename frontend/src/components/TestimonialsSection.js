@@ -22,7 +22,7 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <div className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 font-poppins">
+    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8 font-poppins">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-8 text-gray-900">What Our Leaders Say</h2>
         <div className="flex flex-wrap justify-center gap-8">

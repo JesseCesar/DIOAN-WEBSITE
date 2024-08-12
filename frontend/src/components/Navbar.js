@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo-white.png';
 import { FaSearch } from 'react-icons/fa';
 import { FiX } from 'react-icons/fi';
+// import { useParams } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ locationRef, socialsRef }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [top, setTop] = useState(0);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [news, setNews] = useState([]);
-  const { id } = useParams();
+  // const { id } = useParams();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,6 +60,17 @@ const Navbar = () => {
     article.content.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const scrollToSection = (ref) => {
+    if (ref && ref.current) {  // Add check to ensure ref is defined
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleItemClick = (ref) => {
+    scrollToSection(ref);           // Scroll to the section
+    setIsDropdownOpen(false);       // Close the dropdown
+  };
+
   return (
     <nav className="bg-white fixed w-full z-50 top-0 left-0 transition-transform duration-300" style={{ top: `${top}px` }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-poppins">
@@ -67,22 +78,22 @@ const Navbar = () => {
           {/* Large screen navbar */}
           <div className="hidden md:flex items-center space-x-4 w-full justify-between">
             <div className="flex items-center space-x-2">
-              <Link className="py-2 px-3 text-sm text-green-300 hover:bg-gray-100 rounded-lg" to="/about-us">
+              <Link className="py-2 px-3 text-sm text-green-500 hover:bg-gray-100 rounded-lg" to="/about-us">
                 About Us
               </Link>
-              <Link className="py-2 px-3 text-sm text-green-300 hover:bg-gray-100 rounded-lg" to="/our-principles">
-                Our Principles
-              </Link>
-              <Link className="py-2 px-3 text-sm text-green-300 hover:bg-gray-100 rounded-lg" to="/news">
+              <button className="py-2 px-3 text-sm text-green-500 hover:bg-gray-100 rounded-lg" onClick={() => scrollToSection(locationRef)}>
+                Location
+              </button>
+              <Link className="py-2 px-3 text-sm text-green-500 hover:bg-gray-100 rounded-lg" to="/news">
                 News
               </Link>
-              <Link className="py-2 px-3 text-sm text-green-300 hover:bg-gray-100 rounded-lg" to="/compliance">
-                Compliance
-              </Link>
+              <button className="py-2 px-3 text-sm text-green-500 hover:bg-gray-100 rounded-lg" onClick={() => scrollToSection(socialsRef)} >
+                Socials
+              </button>
             </div>
             <div className="flex items-center justify-center">
               <NavLink to="/" className="flex items-center">
-                <img className='h-10 w-25' src={logo} alt='logo' />
+                <img className="sm:w-30 sm:h-20" src={logo} alt='logo' />
               </NavLink>
             </div>
             <div className="flex items-center">
@@ -124,7 +135,7 @@ const Navbar = () => {
             </div>
             <div className='flex items-center'>
               <NavLink to="/" className="ml-4">
-                <img className='h-15 w-10' src={logo} alt='logo' />
+                <img className='h-15 w-20' src={logo} alt='logo' />
               </NavLink>
             </div>
             <div className="flex items-center">
@@ -152,27 +163,43 @@ const Navbar = () => {
         </div>
         {/* Dropdown for mobile view */}
         {isDropdownOpen && (
-          <div className="md:hidden bg-white shadow-md rounded-lg mt-1 absolute top-16 left-0 right-0 z-40 transition-opacity duration-300">
+          <div className="md:hidden bg-white shadow-md rounded-lg mt-1 absolute top-16 left-0 right-0 z-40 transition-opacity duration-300 w-1/2 font-poppins">
             <Link className="block py-2 px-4 text-gray-800 hover:bg-gray-100" to="/about-us">About Us</Link>
-            <Link className="block py-2 px-4 text-gray-800 hover:bg-gray-100" to="/our-principles">Our Principles</Link>
+            <button className="block py-2 px-4 text-gray-800 hover:bg-gray-100" onClick={() => handleItemClick(locationRef)}>Location</button>
             <Link className="block py-2 px-4 text-gray-800 hover:bg-gray-100" to="/news">News</Link>
-            <Link className="block py-2 px-4 text-gray-800 hover:bg-gray-100" to="/compliance">Compliance</Link>
+            <button className="block py-2 px-4 text-gray-800 hover:bg-gray-100" onClick={() => handleItemClick(socialsRef)}>Socials</button>
           </div>
         )}
       </div>
       {/* Render news articles */}
-      {(isSearchVisible || searchQuery) && (
-        <div className="bg-white p-4">
+      {searchQuery && (
+        <div className="bg-white p-4 font-poppins">
           <ul>
-            {filteredArticles.map(article => (
-              <li key={article.id} className="border-b border-gray-300 py-2">
-                <Link to={`/news/${article._id}`}>
-                  <h2 className="font-bold">{article.title}</h2>
-                  <p className="text-sm text-gray-600">{article.date}</p>
-                  <p>{article.content}</p>
-                </Link>
-              </li>
-            ))}
+            {filteredArticles.map(article => {
+              // Extract the first 7 characters from article.content
+              const firstFewCharacters = article.content.substring(0, 7);
+              // Function to highlight the search query in the first few characters
+              const highlightText = (text, query) => {
+                if (!query) return text;
+                const regex = new RegExp(`(${query})`, 'gi');
+                return text.split(regex).map((part, index) =>
+                  part.toLowerCase() === query.toLowerCase() ?
+                    <span key={index} className="bg-yellow-300">{part}</span> : part
+                );
+              };
+              return (
+                <li key={article.id} className="border-b border-gray-300 py-2">
+                  <Link to={`/news/${article._id}`}>
+                    <span className="font-bold">
+                      {highlightText(article.title, searchQuery)}
+                    </span>
+                    <p>
+                      {highlightText(firstFewCharacters, searchQuery)}...
+                    </p>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

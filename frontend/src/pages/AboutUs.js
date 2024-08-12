@@ -9,7 +9,7 @@ const AboutUs = () => {
   ]
   return (
     <div className='font-poppins'>
-      <section className="p-8 bg-gray-100 text-center">
+      <section className="p-8 bg-white text-center">
         <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
         <p className="text-lg">
           Our mission is to provide high-quality, organic produce to our community while maintaining sustainable farming practices.
@@ -27,7 +27,7 @@ const AboutUs = () => {
           ))}
         </div>
       </section>
-      <section className="p-8 bg-gray-200 text-center">
+      <section className="p-8 bg-white text-center">
         <h2 className="text-3xl font-bold mb-4 text-gray-700">Contact Us</h2>
         <p className="text-lg mb-6 text-gray-600">We'd love to hear from you! Please fill out the form below to get in touch.</p>
         <form className="max-w-md mx-auto space-y-4">

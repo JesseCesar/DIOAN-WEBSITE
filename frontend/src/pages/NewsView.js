@@ -27,9 +27,9 @@ const NewsView = () => {
   }, [id]);
 
   return (
-    <div className='py-8 font-poppins bg-gray-50 text-center'>
+    <div className='py-8 font-poppins bg-white text-center'>
       <div className='max-w-4xl mx-auto px-6 lg:px-8'>
-        <h1 className='text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl'>{news.title}</h1>
+        <h1 className='text-4xl font-extrabold tracking-tight text-black sm:text-5xl'>{news.title}</h1>
         <div className='my-4 text-gray-500 text-sm'>
           <time dateTime={news.createdAt}>
             {moment(news.createdAt).format('MMMM Do YYYY')}
@@ -47,7 +47,7 @@ const NewsView = () => {
           />
         </div>
         <div className='text-left px-4 lg:px-0'>
-          <p className='text-lg leading-8 text-gray-700'>
+          <p className='text-lg leading-8 text-black'>
             {news.content}
           </p>
         </div>
@@ -55,7 +55,7 @@ const NewsView = () => {
       {authUser ? (
         <>
           <Link to={`/news/edit/${news._id}`} className="text-green-500 px-2">Edit News</Link>
-           <DeleteNews newsId={news._id} />
+          <DeleteNews newsId={news._id} />
         </>
       ) : (
         <p>News</p>

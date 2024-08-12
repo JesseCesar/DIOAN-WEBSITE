@@ -19,14 +19,14 @@ const NewsSection = () => {
 
   return (
     <div className="bg-white font-poppins">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 lg:py-6 py-6">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 lg:py-6 py-6 mt-5">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From DIOAN</h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
             Here's what we've been up to
           </p>
         </div>
-        <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-1 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-gray-200 pt-10 sm:pt-16 lg:max-w-none lg:grid-cols-3">
           {news && news.length > 0 && news.slice(0, 3).map((newsItem) => (
             <article key={newsItem._id} className="flex flex-col items-start justify-between bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
               <div className="w-full">
@@ -51,12 +51,12 @@ const NewsSection = () => {
                 </h3>
                 <p className="mt-3 text-sm leading-6 text-gray-600 line-clamp-3">{newsItem.content}</p>
               </div>
-              <Link to={`/news/${newsItem._id}`} className="text-blue-500">Read more</Link>
+              <Link to={`/news/${newsItem._id}`} className="text-green-500">Read more</Link>
             </article>
           ))}
         </div>
         <div className="flex justify-end mt-10">
-          <Link to="/news" className="text-indigo-600 hover:text-indigo-800 transition-colors duration-300">
+          <Link to="/news" className="text-green-300 hover:text-indigo-800 transition-colors duration-300">
             View more
           </Link>
         </div>

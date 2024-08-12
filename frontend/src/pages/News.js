@@ -39,15 +39,15 @@ const News = () => {
   }
 
   return (
-    <div className="bg-gray-50 py-16 sm:py-24">
+    <div className="bg-white pb-16 sm:pb-24 sm:pt-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From DIAON</h2>
+          <h2 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-4xl">From DIAON</h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
             Here's what we've been up to
           </p>
         </div>
-        <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-8 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-8 border-gray-200 pt-5 sm:pt-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {news.length > 0 ? (
             news.map((newsItem) => (
               <article key={newsItem._id} className="flex flex-col items-start justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
@@ -70,11 +70,11 @@ const News = () => {
                   <h3 className="text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                     {newsItem.title}
                   </h3>
-                  <p className="mt-3 text-base text-gray-500 group-hover:text-gray-400">
+                  <p className="mt-3 text-base text-gray-500 group-hover:text-gray-400 line-clamp-3">
                     {newsItem.content}
                   </p>
                 </div>
-                <Link to={`/news/${newsItem._id}`} className="text-blue-500">Read more</Link>
+                <Link to={`/news/${newsItem._id}`} className="text-green-500">Read more</Link>
               </article>
             ))
           ) : (
