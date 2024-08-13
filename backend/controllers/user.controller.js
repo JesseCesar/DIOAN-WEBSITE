@@ -2,57 +2,71 @@ import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
 import { validateEmail } from "../validators/validator.js";
-import sendEmail from '../utils/sendEmail.js'
+import sendEmail from '../utils/sendEmail.js';
 import crypto from 'crypto';
+
 
 export const signup = async (req, res) => {
   try {
-    const {fullName, email, password, confirmPassword, role} = req.body;
+    const { fullName, email, password, confirmPassword, role, passcode } = req.body;
 
+    // Validate passcode
+    if (passcode !== process.env.SIGNUP_PASSCODE) {
+      return res.status(403).json({ error: 'Invalid passcode' });
+    }
+
+    // Validate email
     if (!validateEmail(email)) {
       return res.status(400).json({ error: 'Invalid email address' });
     }
 
-    if(password !== confirmPassword) {
-      return res.status(400).json({error:"Passwords don't match"})
+    // Validate password match
+    if (password !== confirmPassword) {
+      return res.status(400).json({ error: "Passwords don't match" });
     }
 
-    const user = await User.findOne({email})
-
-    if(user) {
-      return res.status(400).json({error:"User already exists"})
+    // Check if user already exists
+    const user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ error: "User already exists" });
     }
 
-    //Hash the password
+    // Hash the password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-
+    // Create new user
     const newUser = new User({
       fullName,
       email,
       password: hashedPassword,
       role
-    })
+    });
 
-    if (newUser){
+    // Save the new user
+    if (newUser) {
       await newUser.save();
-    // Generate jwt token
-    generateTokenAndSetCookie(newUser._id, res);
-    res.status(201).json({
-      _id: newUser._id,
-      fullName: newUser.fullName,
-      email: newUser.email,
-      role: newUser.role
-    })} else {
-      res.status(400).json({error:"Invalid user data"})
+
+      // Generate JWT token
+      generateTokenAndSetCookie(newUser._id, res);
+
+      // Respond with user details
+      res.status(201).json({
+        _id: newUser._id,
+        fullName: newUser.fullName,
+        email: newUser.email,
+        role: newUser.role
+      });
+    } else {
+      res.status(400).json({ error: "Invalid user data" });
     }
 
   } catch (error) {
     console.log("Error signing up", error.message);
-    res.status(500).json({error: error.message})
+    res.status(500).json({ error: error.message });
   }
 };
+
 
 
 export const getUser = async (req, res) => {
