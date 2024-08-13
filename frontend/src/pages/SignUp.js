@@ -1,17 +1,18 @@
-import React from 'react'
-import logo from '../assets/logo-black.png'
-import background from '../assets/file.png'
-import { Link } from 'react-router-dom'
-import { useState } from "react"
-import useSignup from "../hooks/useSignup"
+import React from 'react';
+import logo from '../assets/logo-black.png';
+import background from '../assets/file.png';
+import { Link } from 'react-router-dom';
+import { useState } from "react";
+import useSignup from "../hooks/useSignup";
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
     fullName: "",
     email: "",
     password: "",
-    confirmPassword: ""
-  })
+    confirmPassword: "",
+    passcode: "" // Add passcode here
+  });
 
   const { loading, signup } = useSignup();
 
@@ -102,6 +103,23 @@ const SignUp = () => {
               </div>
             </div>
             <div>
+              <label htmlFor="passcode" className="block text-sm font-medium leading-6 text-white">
+                Passcode
+              </label>
+              <div className="mt-2">
+                <input
+                  name="passcode"
+                  type="text"
+                  autoComplete="off"
+                  placeholder=' Enter Passcode'
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value={inputs.passcode}
+                  onChange={(e) => setInputs({ ...inputs, passcode: e.target.value })}
+                />
+              </div>
+            </div>
+            <div>
               <button
                 type="submit"
                 className="flex w-1/2 justify-center mx-auto rounded-md bg-white px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -122,7 +140,8 @@ const SignUp = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default SignUp;
+
