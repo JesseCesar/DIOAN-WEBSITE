@@ -11,7 +11,7 @@ const News = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const API_URL = 'https://diaon.onrender.com '|| 'http://localhost:5000/api';
+    const API_URL = 'https://diaon.onrender.com'|| 'http://localhost:5000/api';
 
     fetch(`${API_URL}/news`)
       .then(response => {
