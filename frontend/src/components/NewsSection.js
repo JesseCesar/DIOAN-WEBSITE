@@ -5,13 +5,17 @@ import DefaultImg from '../assets/default.jpg';
 
 const NewsSection = () => {
   const [news, setNews] = useState([]);
-  //const API_URL = 'https://diaon.onrender.com'|| 'http://localhost:5000/api';
 
   useEffect(() => {
     fetch(`https://diaon.onrender.com/news`)
-      .then(response => response.json()) // parse the response to JSON
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(data => {
-        setNews(data); // set the news state with the parsed data
+        setNews(data);
       })
       .catch(error => {
         console.error('Error fetching news:', error);
@@ -66,4 +70,4 @@ const NewsSection = () => {
   )
 }
 
-export default NewsSection
+export default NewsSection;
