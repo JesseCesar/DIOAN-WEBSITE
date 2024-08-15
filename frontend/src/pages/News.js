@@ -10,7 +10,9 @@ const News = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/news`)
+    const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000/api';
+
+    fetch(`${API_URL}/news`)
       .then(response => {
         console.log(`Response status: ${response.status}, status text: '${response.statusText}'`);
         if (!response.ok) {
