@@ -3,6 +3,7 @@ import moment from 'moment';
 import DefaultImg from '../assets/default.jpg';
 import { Link } from 'react-router-dom';
 
+
 const News = () => {
   console.log('News component rendered');
   const [news, setNews] = useState([]);
@@ -10,7 +11,7 @@ const News = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000/api';
+    const API_URL = 'https://diaon.onrender.com '|| 'http://localhost:5000/api';
 
     fetch(`${API_URL}/news`)
       .then(response => {
