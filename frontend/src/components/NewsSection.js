@@ -5,9 +5,10 @@ import DefaultImg from '../assets/default.jpg';
 
 const NewsSection = () => {
   const [news, setNews] = useState([]);
+  const API_URL = 'https://diaon.onrender.com '|| 'http://localhost:5000/api';
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/news`)
+    fetch(`${API_URL}/news`)
       .then(response => response.json()) // parse the response to JSON
       .then(data => {
         setNews(data); // set the news state with the parsed data
