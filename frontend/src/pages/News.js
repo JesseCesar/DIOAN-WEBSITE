@@ -10,17 +10,13 @@ const News = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`https://diaon.onrender.com/news`)
+    const API_URL = 'https://diaon.onrender.com/api'|| 'http://localhost:5000/api';
+
+    fetch(`${API_URL}/news`)
       .then(response => {
         console.log(`Response status: ${response.status}, status text: '${response.statusText}'`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const contentType = response.headers.get('content-type');
-        if (!contentType || !contentType.includes('application/json')) {
-          return response.text().then(text => {
-            throw new Error(`Expected JSON, got ${contentType}: ${text}`);
-          });
         }
         return response.json();
       })
