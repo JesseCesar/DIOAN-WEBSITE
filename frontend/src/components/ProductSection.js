@@ -6,31 +6,31 @@ const ProductSection = () => {
   const products = [
     {
       id: 1,
-      name: 'Carrot',
+      name: 'Agricultural products',
       description: 'Fresh organic carrots.',
       image: porimage,
     },
     {
       id: 2,
-      name: 'Apple',
+      name: 'Pharmacy services',
       description: 'Crispy and sweet apples.',
       image: porimage,
     },
     {
       id: 3,
-      name: 'Banana',
+      name: 'Catering services',
       description: 'Ripe and delicious bananas.',
       image: porimage,
     },];
   return (
     <div className="container mx-auto px-4 font-poppins">
-        <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Our Services</h2>
-        <div className="flex flex-wrap justify-center gap-6">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+      <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Our Services</h2>
+      <div className="flex flex-wrap justify-center gap-6">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
+    </div>
   )
 }
 

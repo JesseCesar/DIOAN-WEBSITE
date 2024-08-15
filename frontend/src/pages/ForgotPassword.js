@@ -21,8 +21,8 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-6 rounded shadow-md w-full max-w-sm">
+    <div className="flex items-center justify-center min-h-screen bg-white font-poppins">
+      <div className="bg-white p-6 rounded shadow-md w-full max-w-sm border border-gray-300">
         <h2 className="text-2xl font-bold mb-6">Forgot Password</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -40,7 +40,7 @@ const ForgotPassword = () => {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             disabled={loading}
           >
             {loading ? 'Sending...' : 'Send Reset Link'}

@@ -67,7 +67,7 @@ const Footer = forwardRef((props, ref) => {
             <Link to="/news/create" className='px-3 py-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100'>Create News</Link>
           </>
         ) : (
-          <p>News.</p>
+          <Link to="/log-in" className='px-3 py-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100'>Log In</Link>
         )}
       </div>
 
