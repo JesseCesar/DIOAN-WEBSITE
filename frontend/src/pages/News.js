@@ -10,9 +10,9 @@ const News = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const API_URL = 'https://diaon.onrender.com/api'|| 'http://localhost:5000/api';
+    //const API_URL = 'https://diaon.onrender.com/api'|| 'http://localhost:5000/api';
 
-    fetch(`${API_URL}/news`)
+    fetch(`https://diaon.onrender.com/api/news`)
       .then(response => {
         console.log(`Response status: ${response.status}, status text: '${response.statusText}'`);
         if (!response.ok) {
