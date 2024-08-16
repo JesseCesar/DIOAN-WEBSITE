@@ -7,7 +7,7 @@ const NewsSection = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetch(`https://diaon.onrender.com/news`)
+    fetch(`https://diaon.onrender.com/api/news`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
